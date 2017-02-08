@@ -1,0 +1,48 @@
+<table class="settings-table">
+    <tr>
+        <th>Order property</th>
+        <th>Order by</th>
+        <th>Per page</th>
+    </tr>
+    <tr>
+        <td>
+            <select v-model="filter.orderProp">
+                <option value="date">Date</option>
+                <option value="createdAt">Created at</option>
+                <option value="id">Id</option>
+            </select>
+        </td>
+        <td>
+            <select v-model="filter.orderBy">
+                <option value="DESC">DESC</option>
+                <option value="ASC">ASC</option>
+            </select>
+        </td>
+        <td>
+            <select v-model="state.perPage">
+                <option value="10">10</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+            </select>
+        </td>
+    </tr>
+</table>
+
+<table class="performances-table">
+    <tr>
+        <th>id</th>
+        <th>Title</th>
+        <th>Date</th>
+        <th>Artist</th>
+        <th>Place</th>
+        <th>Created at</th>
+    </tr>
+    <tr v-for="performance in performances">
+        <td>{{ performance.id }}</td>
+        <td>{{ performance.title }}</td>
+        <td>{{ performance.date }}</td>
+        <td>{{ performance.artist.name }}</td>
+        <td>{{ performance.place.title }}</td>
+        <td>{{ performance.createdAt }}</td>
+    </tr>
+</table>

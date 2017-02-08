@@ -6,6 +6,7 @@ const HTTPStatus = require('http-status');
 const path       = require('path');
 const _          = require('lodash');
 const glob       = require('glob');
+const fs         = require('fs');
 
 const cookieParser  = require('cookie-parser');
 const cookieSession = require('cookie-session');
@@ -21,8 +22,11 @@ app.use(cookieSession({ name: 'session', secret: config.SECRET }));
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use(express.static(path.join(__dirname, 'public')));
+
 const frontendRouter = express.Router();
-frontendRouter.get('/', (req, res) => res.send());
+frontendRouter.get('/', (req, res) =>
+  res.send(fs.readFileSync(`${__dirname}/app/frontend/template/index.html`).toString()));
 app.use(frontendRouter);
 
 _.each(glob.sync(`${__dirname}/app/api/*.js`), (module) =>

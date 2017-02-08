@@ -5,6 +5,7 @@ docker-compose up -d # MySQL
 cp app.json.example app.json
 node bin/cli schema:create # Create MySQL Schema
 node bin/cli fixtures:load # Load test data
+./node_modules/.bin/webpack --color --progress
 pm2 start app.json
 ```
 
