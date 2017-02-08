@@ -1,0 +1,23 @@
+{
+  "name": "Performances",
+  "script": "./bin/www",
+  "args": [],
+  "watch": true,
+  "ignore_watch": [
+    "node_modules",
+    "app/frontend/**"
+  ],
+  "node_args": "",
+  "merge_logs": true,
+  "cwd": "./",
+  "env": {
+    "NODE_ENV": "development",
+    "PORT": "3000",
+    "DATABASE_NAME": "performances",
+    "DATABASE_USER": "root",
+    "DATABASE_PASSWORD": "root",
+    "DATABASE_HOST": "docker",
+    "DATABASE_PORT": "3306",
+    "SECRET": "fuokee1ke9waew9gohdoh2ohd3shieXohCh6saan"
+  }
+}

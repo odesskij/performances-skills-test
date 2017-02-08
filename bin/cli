@@ -1,0 +1,23 @@
+#!/usr/bin/env node
+
+process.env.CLI = '1';
+
+const glob = require('glob');
+const _ = require('lodash');
+
+const command = process.argv[2];
+
+const commands = _.extend(
+    {},
+    require('./../app/command/schema'),
+    require('./../app/command/database')
+)
+
+if(!commands[command] || command === 'help') {
+    console.log('Available commands: ')
+    _.each(_.keys(commands), (command) =>
+        console.log("\t", command))
+    process.exit(0);
+}
+
+commands[command]();
